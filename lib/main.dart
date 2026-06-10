@@ -9,7 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'RefreshIndicator Demo',
+      title: 'RefreshIndicator',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const FeedPage(),
     );
@@ -30,9 +31,13 @@ class _FeedPageState extends State<FeedPage> {
   Future<void> _onRefresh() async {
     // Simula una llamada a API o carga de datos
     await Future.delayed(const Duration(seconds: 2));
-    
+
     setState(() {
-      _items = List.generate(10, (index) => 'Noticia ${index + 1} (actualizada ${DateTime.now().hour}:${DateTime.now().minute})');
+      _items = List.generate(
+        10,
+        (index) =>
+            'Noticia ${index + 1} (actualizada ${DateTime.now().hour}:${DateTime.now().minute})',
+      );
     });
   }
 
